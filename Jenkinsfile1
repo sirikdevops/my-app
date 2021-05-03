@@ -1,0 +1,10 @@
+node{
+  stage('SCM checkout'){
+   git 'https://github.com/sirikdevops/my-app'
+  }
+  stage('clean-compile-package'){
+  // get maven home path from master instance
+   def mvnpath = tool name: 'maven3.6.3', type: 'maven'
+   sh "${mvnpath}/bin/mvn package"
+  }
+}
